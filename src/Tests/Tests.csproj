@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainTests.cs" />
     <Compile Include="With\Setting_several_properties_at_once.cs" />
     <Compile Include="SwitchOnTypeTests.cs" />
     <Compile Include="With\Clone_an_instance_into_the_same_type.cs" />

@@ -9,6 +9,11 @@ namespace With
 			tapaction(that);
 			return that;
 		}
+
+        public static Out Chain<In, Out>(this In objectInChain, Func<In,Out> chain) 
+        {
+            return chain(objectInChain);
+        }
 	}
 }
 
