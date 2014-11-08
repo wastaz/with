@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace With
 {
@@ -13,6 +14,14 @@ namespace With
         public static Out Chain<In, Out>(this In objectInChain, Func<In,Out> chain) 
         {
             return chain(objectInChain);
+        }
+
+        public static IEnumerable<Out> Pipe<In, Out>(this IEnumerable<In> objects, Func<In, Out> transform)
+        {
+            foreach (var item in objects)
+            {
+                yield return transform(item);
+            }
         }
 	}
 }

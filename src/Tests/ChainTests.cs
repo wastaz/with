@@ -34,5 +34,13 @@ namespace Tests
             }
         }
 
+        [Theory, AutoData]
+        public void Should_pipe_something(string[] array)
+        {
+            var i = 0;
+            Assert.Equal(0.To(array.Length - 1).ToArray(), 
+                array.Pipe(s => i++).ToArray());
+        }
+
     }
 }
