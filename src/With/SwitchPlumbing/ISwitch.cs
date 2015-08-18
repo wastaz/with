@@ -1,31 +1,16 @@
 namespace With.SwitchPlumbing
 {
-    public abstract class ISwitch<In, Out>
+    public interface ISwitch<In, Out>
     {
-        public abstract bool TryMatch(out Out value);
+        bool TryMatch(out Out value);
 
-        public abstract In Instance
+        In Instance
         {
-            get;
-            set;
+            get; set;
         }
 
-        public Out ValueOf(In instance)
-        {
-            this.Instance = instance;
-            Out value;
-            if (TryMatch(out value))
-                return value;
-            throw new NoMatchFoundException();
-        }
-        public Out Value() { return ValueOf(Instance); }
+        Out ValueOf(In instance);
 
-        public static implicit operator Out(ISwitch<In, Out> d)
-        {
-            Out value;
-            if (d.TryMatch(out value))
-                return value;
-            throw new NoMatchFoundException();
-        }
+        ISwitch<In, Out> Add(IMatcher<In, Out> m);
     }
 }

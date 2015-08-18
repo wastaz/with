@@ -10,9 +10,9 @@ namespace With
     Regex expected,
     Action<Match> result)
         {
-            return new Match<string, NothingOrPrepared>(that,
+            return that.Add(new Match<string, NothingOrPrepared>(
                 expected.IsMatch,
-                F.ReturnDefault<string, NothingOrPrepared>(i => result(expected.Match(i))));
+                F.ReturnDefault<string, NothingOrPrepared>(i => result(expected.Match(i)))));
         }
         public static ISwitch<string, NothingOrPrepared> Regex<NothingOrPrepared>(this ISwitch<string, NothingOrPrepared> that,
             string expected,
@@ -33,9 +33,9 @@ namespace With
             Regex expected,
             Out result)
         {
-            return new Match<string, Out>(that,
+            return that.Add(new Match<string, Out>(
                 expected.IsMatch,
-                F.IgnoreInput<string,Out>(result));
+                F.IgnoreInput<string,Out>(result)));
         }
         public static ISwitch<string, NothingOrPrepared> Regex<NothingOrPrepared>(this ISwitch<string, NothingOrPrepared> that,
             string expected,
@@ -48,9 +48,9 @@ namespace With
             Regex expected,
             Action result)
         {
-            return new Match<string, NothingOrPrepared>(that,
+            return that.Add(new Match<string, NothingOrPrepared>(
                 expected.IsMatch,
-                F.ReturnDefault<string, NothingOrPrepared>(F.IgnoreInput<string>(result)));
+                F.ReturnDefault<string, NothingOrPrepared>(F.IgnoreInput<string>(result))));
         }
         public static ISwitch<string, NothingOrPrepared> Regex<NothingOrPrepared>(this ISwitch<string, NothingOrPrepared> that,
             string expected,
@@ -72,9 +72,9 @@ namespace With
             Regex expected,
             Func<Out> result)
         {
-            return new Match<string, Out>(that,
+            return that.Add(new Match<string, Out>(
                 expected.IsMatch,
-                F.IgnoreInput<string, Out>(result));
+                F.IgnoreInput<string, Out>(result)));
         }
         public static ISwitch<string, Out> Regex<Out>(this ISwitch<string, Out> that,
             string expected,
@@ -96,7 +96,7 @@ namespace With
             Regex expected,
             Func<Match, Out> result)
         {
-            return new Match<string, Out>(that, expected.IsMatch, i => result(expected.Match(i)));
+            return that.Add(new Match<string, Out>(expected.IsMatch, i => result(expected.Match(i))));
         }
         public static ISwitch<string, Out> Regex<Out>(this ISwitch<string, Out> that,
             string expected,

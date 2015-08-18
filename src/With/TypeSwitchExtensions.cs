@@ -9,7 +9,7 @@ namespace With
             this ISwitch<In, Out> that, Func<On, Out> func)
             where On : In
         {
-            return new MatchType<On, In, Out>(that, func);
+            return that.Add(new MatchType<On, In, Out>(func));
         }
     }
 }

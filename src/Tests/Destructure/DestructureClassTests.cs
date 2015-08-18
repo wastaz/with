@@ -67,7 +67,7 @@ namespace Tests.Destructure
                     .Case((string a, int b, string c) => 2)
                     .Case((string a, string b, int c) => 3)
                     .Case((string a, int b, int c) => 4)
-                  );
+                ).Result();
         }
         private static int MatchProperties(object instance)
         {
@@ -80,7 +80,7 @@ namespace Tests.Destructure
                     .Case((string a, int b, string c) => 2)
                     .Case((string a, string b, int c) => 3)
                     .Case((string a, int b, int c) => 4)
-                  );
+                ).Result();
         }
         [Theory, AutoData]
         public void Should_match_the_first_case(

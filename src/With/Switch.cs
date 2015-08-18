@@ -4,6 +4,11 @@ namespace With
 {
     public static partial class Switch
     {
+        public static Out Value<In, Out>(this ISwitch<In, Out> that) 
+        { 
+            return that.ValueOf(that.Instance); 
+        }
+
         public static ISwitch<In, Nothing> Match<In>(In value)
         {
             return new Switch<In, Nothing>().Tap(c => c.Instance = value);
@@ -12,7 +17,6 @@ namespace With
         {
             return new Switch<In, Nothing>().Tap(c => c.Instance = value);
         }
-
 
         public static ISwitch<In, Out> Match<In, Out>(In value)
         {
