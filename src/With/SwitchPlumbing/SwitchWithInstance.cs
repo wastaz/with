@@ -24,15 +24,7 @@ namespace With.SwitchPlumbing
 
         public ISwitchWithInstance<In, Out> Add(IMatcher<In, Out> m)
         {
-            return new SwitchWithInstance<In, Out>(Instance, _switch.Add(m));
-        }
-
-        public In Instance
-        {
-            get
-            {
-                return _instance;
-            }
+            return new SwitchWithInstance<In, Out>(_instance, _switch.Add(m));
         }
     }
 }

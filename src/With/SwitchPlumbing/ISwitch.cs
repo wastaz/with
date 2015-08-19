@@ -17,11 +17,6 @@ namespace With.SwitchPlumbing
     {
         bool TryMatch(out Out value);
 
-        In Instance
-        {
-            get; 
-        }
-
         Out Value();
     }
 }
