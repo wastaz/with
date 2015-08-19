@@ -6,14 +6,14 @@ namespace Tests
     {
         private string DoMatch(string v)
         {
-            return Switch.Match<string, string>(v)
+            return Switch.Match<string, string>()
                 .Case("1", () => "One!")
                 .Regex("X[a-z]{2}\\d{1,}", "Xapp!")
                 .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", p => "Happ!")
                 .Case(i => i == "42", _ => "Meaning of life")
                 .Case(i => i == "52", "Some other number")
                 .Else(_ => "Ain't special")
-                .Result();
+                .ValueOf(v);
         }
 
         [Fact]

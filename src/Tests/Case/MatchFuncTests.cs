@@ -70,10 +70,11 @@ namespace Tests
         {
             var instance = "m";
 
-            int result = Switch.Match<string, int>(instance)
+            int result = Switch.Match<string, int>()
                 .Case("m", m => 1)
                 .Case("s", m => 2)
-                .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", m => 3).Result();
+                .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", m => 3)
+                .ValueOf(instance);
             Assert.Equal(1, result);
         }
 
@@ -82,10 +83,11 @@ namespace Tests
         {
             var instance = "Rio1";
 
-            int result = Switch.Match<string, int>(instance)
+            int result = Switch.Match<string, int>()
                 .Case("m", m => 1)
                 .Case("s", m => 2)
-                .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", m => 3).Result();
+                .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", m => 3)
+                .ValueOf(instance);
             Assert.Equal(3, result);
         }
 
@@ -94,11 +96,11 @@ namespace Tests
         {
             var instance = "Rio3";
 
-            int result = Switch.Match<string, int>(instance)
+            int result = Switch.Match<string, int>()
                 .Case("m", m => 1)
                 .Case("s", m => 2)
                 .Regex("[A-Z]{1}[a-z]{2}(\\d{1,})", m => Int32.Parse(m.Groups[1].Value))
-                .Result();
+                .ValueOf(instance);
             Assert.Equal(3, result);
         }
 
@@ -107,12 +109,12 @@ namespace Tests
         {
             var instance = "Rio1";
 
-            int result = Switch.Match<string, int>(instance)
+            int result = Switch.Match<string, int>()
                 .Regex("X[a-z]{2}\\d{1,}", 4)
                 .Regex("[A-Z]{1}[a-z]{2}\\d{1,}", m => 3)
                 .Case("m", m => 1)
                 .Case("s", m => 2)
-                .Result();
+                .ValueOf(instance);
             Assert.Equal(3, result);
         }
 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-
 namespace With.SwitchPlumbing
 {
     public class Switch<In, Out> : ISwitch<In, Out>
@@ -22,12 +21,12 @@ namespace With.SwitchPlumbing
                 .ToArray();// copy and add
         }
 
-        public bool TryMatch(out Out value)
+        public bool TryMatch(In instance, out Out value)
         {
             for (int i =  0; i < matchers.Length; i++)
             {
                 Out tryValue;
-                if (matchers[i].TryMatch(Instance, out tryValue))
+                if (matchers[i].TryMatch(instance, out tryValue))
                 {
                     value = tryValue;
                     return true;
@@ -37,12 +36,6 @@ namespace With.SwitchPlumbing
             return false;
         }
 
-        public In Instance
-        {
-            get;
-            set;
-        }
-
         public ISwitch<In, Out> Add(IMatcher<In, Out> m)
         {
             return new Switch<In, Out>(m, this.matchers);
@@ -50,19 +43,11 @@ namespace With.SwitchPlumbing
 
         public Out ValueOf(In instance)
         {
-            this.Instance = instance;
             Out value;
-            if (TryMatch(out value))
-                return value;
-            throw new NoMatchFoundException();
-        }
-
-        public static implicit operator Out(Switch<In, Out> d)
-        {
-            Out value;
-            if (d.TryMatch(out value))
+            if (TryMatch(instance, out value))
                 return value;
             throw new NoMatchFoundException();
         }
     }
+
 }

@@ -78,8 +78,14 @@
     <Compile Include="RangePlumbing\Int64Range.cs" />
     <Compile Include="RangePlumbing\Int32Range.cs" />
     <Compile Include="SwitchPlumbing\MatchType.cs" />
-    <Compile Include="SwitchPlumbing\ISwitch.cs" />
-    <Compile Include="SwitchPlumbing\Switch.cs" />
+    <Compile Include="SwitchPlumbing\ISwitch.cs">
+    </Compile>
+    <Compile Include="SwitchPlumbing\SwitchWithInstance.cs">
+      <DependentUpon>ISwitch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchPlumbing\Switch.cs">
+      <DependentUpon>ISwitch.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwitchPlumbing\MatchSingle.cs" />
     <Compile Include="SwitchPlumbing\Nothing.cs" />
     <Compile Include="SwitchPlumbing\MatchElse.cs" />
