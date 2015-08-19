@@ -23,10 +23,10 @@ namespace With.SwitchPlumbing
 
         public bool TryMatch(In instance, out Out value)
         {
-            for (int i =  0; i < matchers.Length; i++)
+            foreach (var matcher in matchers)
             {
                 Out tryValue;
-                if (matchers[i].TryMatch(instance, out tryValue))
+                if (matcher.TryMatch(instance, out tryValue))
                 {
                     value = tryValue;
                     return true;
