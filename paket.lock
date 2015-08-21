@@ -9,6 +9,7 @@ NUGET
     xunit (1.8.0.1549) - framework: >= net40
     xunit.extensions (1.8.0.1549) - framework: >= net40
       xunit (>= 1.8.0.1549)
+    xunit.runners (1.9.2) - framework: >= net40
   remote: https://www.myget.org/F/wallymathieu/api/v2
   specs:
     MarkdownLog (0.9.4)

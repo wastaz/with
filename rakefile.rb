@@ -48,6 +48,11 @@ task :restore => :bootstrap do
   paket "restore"
 end
 
+desc "Install NuGet packages."
+task :install => :bootstrap do
+  paket "install"
+end
+
 desc "Push to NuGet."
 task :push => :pack do
   latest = NugetHelper.last_version(Dir.glob('./nuget/With*.nupkg'))

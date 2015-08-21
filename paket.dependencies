@@ -6,6 +6,6 @@ nuget Nuget.CommandLine
 nuget AutoFixture 3.21.0 framework: >= net40
 nuget AutoFixture.Xunit 3.21.0 framework: >= net40
 nuget xunit 1.8.0.1549 framework: >= net40
-nuget xunit.extensions 1.8.0.1549 framework: >= net40
+nuget xunit.runners ~> 1.9 framework: >= net40
 nuget xunit.extensions 1.8.0.1549 framework: >= net40
 nuget MarkdownLog 0.9.4
