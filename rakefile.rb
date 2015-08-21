@@ -44,12 +44,12 @@ task :pack => [:core_copy_to_nuspec] do |nuget|
 end
 
 desc "Install missing NuGet packages."
-task :restore do
+task :restore => :bootstrap do
   paket "restore"
 end
 
 desc "Push to NuGet."
-task :push do
+task :push => :pack do
   latest = NugetHelper.last_version(Dir.glob('./nuget/With*.nupkg'))
   NugetHelper.exec("push #{latest}")
 end
