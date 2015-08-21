@@ -39,7 +39,7 @@ end
 desc "create the nuget package"
 task :pack => [:core_copy_to_nuspec] do |nuget|
   cd File.join($dir, "nuget") do
-    paket "pack With.csproj"
+    NugetHelper.exec "pack With.nuspec"
   end
 end
 
@@ -51,7 +51,7 @@ end
 desc "Push to NuGet."
 task :push do
   latest = NugetHelper.last_version(Dir.glob('./nuget/With*.nupkg'))
-  paket "push #{latest}"
+  NugetHelper.exec("push #{latest}")
 end
 
 desc "test using console"
